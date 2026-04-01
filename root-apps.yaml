@@ -2,16 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
+  project: default
   destination:
-    name: in-cluster
+    name: https://kubernetes.default.svc
     namespace: argocd
   source:
     path: apps
-    repoURL: 'xxxxxxxxxxxxxx'
+    repoURL: 'git@github.com:cloudhein/argcd-labs.git'
     targetRevision: HEAD
-  project: default
-  # syncPolicy:
-  #   automated:
-  #     prune: true
-  #     selfHeal: true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
