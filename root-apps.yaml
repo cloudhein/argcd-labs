@@ -2,13 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
+  namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   destination:
     name: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: default
   source:
     path: apps
     repoURL: 'git@github.com:cloudhein/argcd-labs.git'
