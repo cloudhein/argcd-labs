@@ -12,7 +12,7 @@ spec:
     namespace: default
   source:
     path: apps
-    repoURL: 'git@github.com:cloudhein/argcd-labs.git'
+    repoURL: 'https://github.com/cloudhein/argcd-labs.git'
     targetRevision: HEAD
   syncPolicy:
     automated:
